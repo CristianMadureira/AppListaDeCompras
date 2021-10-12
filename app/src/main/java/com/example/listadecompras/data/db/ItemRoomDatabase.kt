@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.internal.synchronized
 
-@Database(entities = [ItemEntity::class], version = 1, exportSchema = false)
+@Database(entities = [ItemEntity::class], version = 1)
 abstract class ItemRoomDatabase : RoomDatabase() {
     abstract fun itemDao(): ItemDao
 
@@ -21,7 +21,7 @@ abstract class ItemRoomDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     ItemRoomDatabase::class.java,
-                    "item_database"
+                    "item_database_teste"
                 )
                     .fallbackToDestructiveMigration().build()
                 INSTANCE = instance

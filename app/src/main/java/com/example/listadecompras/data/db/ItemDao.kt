@@ -12,11 +12,11 @@ interface ItemDao {
     @Update
     suspend fun atualizar(item: ItemEntity)
 
-    @Delete
-    suspend fun deletar(item: ItemEntity)
+    @Query("DELETE from item WHERE id = :id" )
+    suspend fun deletar(id: Long)
 
     @Query("SELECT * from item WHERE id = :id")
-    fun getItem(id: Int) : Flow<ItemEntity>
+    fun getItem(id: Int): Flow<ItemEntity>
 
     @Query("SELECT * from item ORDER BY nome ASC")
     fun getItens() : Flow<List<ItemEntity>>

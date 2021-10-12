@@ -6,5 +6,12 @@ import kotlinx.coroutines.InternalCoroutinesApi
 class ListaComprasApplication : Application() {
 
     @InternalCoroutinesApi
-    val database: ItemRoomDatabase by lazy { ItemRoomDatabase.getDataBase(this) }
+    val database: ItemRoomDatabase by lazy {
+        try {
+            ItemRoomDatabase.getDataBase(this) }
+        catch (error:Exception) {
+            throw error
+        }
+        }
+
 }
